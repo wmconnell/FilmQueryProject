@@ -77,6 +77,7 @@ public class FilmQueryApp {
 		boolean keepGoing = true;
 
 		while (keepGoing) {
+			System.out.println("");
 			System.out.print("Please enter the film ID number: ");
 			int menuChoice = input.nextInt();
 			input.nextLine();
@@ -88,7 +89,6 @@ public class FilmQueryApp {
 			} catch (Exception e) {
 				System.out.println("");
 				System.out.println("Film not found.");
-				System.out.println("");
 			}
 		}
 
@@ -97,33 +97,30 @@ public class FilmQueryApp {
 	private void searchByKeyword(Scanner input) {
 
 		boolean keepGoing = true;
-		
+
 		while (keepGoing) {
 			System.out.println("Please enter a keyword search term");
 			String keyword = input.nextLine();
 			List<Film> films = db.findFilmByKeyword(keyword);
 			try {
 				if (films.size() > 0) {
-				
-				for (Film film : films) {
-						
+
+					for (Film film : films) {
+
 						System.out.println("");
 						System.out.println(film.toString(0));
-					} 
-				} else {
-						System.out.println("");
-						System.out.println("Film not found.");
-						System.out.println("");
 					}
-					
-				
+				} else {
+					System.out.println("");
+					System.out.println("Film not found.");
+					System.out.println("");
+				}
 
 			} catch (Exception e) {
 				System.out.println("");
 				System.out.println("Film not found.");
 				System.out.println("");
 			}
-	}
 		}
 	}
-
+}

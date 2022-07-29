@@ -110,15 +110,6 @@ public class Film {
 	public Film() {
 	}
 
-//	public Film(String title, String description, int year, String rating) {
-//		super();
-//		this.title = title;
-//		this.description = description;
-//		this.year = year;
-////		this.languageId = languageId;
-//		this.rating = rating;
-//	}
-
 	public Film(int id, String title, String description, int year, int languageId, String language, int rentalDuration,
 			double rentalRate, int length, double replacementCost, String rating, String specialFeatures,
 			List<Actor> actors) {
@@ -171,8 +162,8 @@ public class Film {
 	}
 
 	public String toString(int i) {
-		return "Title: " + title + "\nDescription: " + description + "\nYear: " + year + "\nLanguage: "+ language + "\nRating: " + rating
-				+ "\nActors: " + actorList;
+		return "Title: " + title + "\nDescription: " + description + "\nYear: " + year + "\nLanguage: " + language
+				+ "\nRating: " + rating + "\nActors: " + actorList;
 	}
 
 	public List<Actor> getActorList() {

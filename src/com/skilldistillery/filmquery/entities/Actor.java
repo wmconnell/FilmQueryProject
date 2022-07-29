@@ -7,8 +7,9 @@ public class Actor {
 	private int id;
 	private String firstName;
 	private String lastName;
-	
-	public Actor() {}
+
+	public Actor() {
+	}
 
 	public Actor(int id, String firstName, String lastName) {
 		super();
@@ -62,6 +63,5 @@ public class Actor {
 	public String toString() {
 		return firstName + " " + lastName;
 	}
-	
-	
+
 }

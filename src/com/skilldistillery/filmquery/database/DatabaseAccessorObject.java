@@ -169,17 +169,6 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				String rating = rs.getString("f.rating");
 				String features = rs.getString("f.special_features");
 
-//			String langSql = "SELECT name FROM language Where id = ?";
-//			
-//			PreparedStatement langStmt = conn.prepareStatement(langSql);
-//			stmt.setInt(1, langId);
-//			
-//			ResultSet langRs = langStmt.executeQuery();
-//			
-//			while (langRs.next()) {
-//				language = langRs.getString("name");
-//			}
-
 				List<Actor> actors = findActorsByFilmId(filmId);
 				Film film = new Film(filmId, title, desc, releaseYear, langId, language, rentDur, rate, length, repCost,
 						rating, features, actors);
