@@ -10,6 +10,7 @@ public class Film {
 	private String description;
 	private int year;
 	private int languageId;
+	private String language;
 	private int rentalDuration;
 	private double rentalRate;
 	private int length;
@@ -118,7 +119,7 @@ public class Film {
 //		this.rating = rating;
 //	}
 
-	public Film(int id, String title, String description, int year, int languageId, int rentalDuration,
+	public Film(int id, String title, String description, int year, int languageId, String language, int rentalDuration,
 			double rentalRate, int length, double replacementCost, String rating, String specialFeatures,
 			List<Actor> actors) {
 		super();
@@ -127,6 +128,7 @@ public class Film {
 		this.description = description;
 		this.year = year;
 		this.languageId = languageId;
+		this.language = language;
 		this.rentalDuration = rentalDuration;
 		this.rentalRate = rentalRate;
 		this.length = length;
@@ -169,7 +171,7 @@ public class Film {
 	}
 
 	public String toString(int i) {
-		return "Title: " + title + "\nDescription: " + description + "\nYear: " + year + "\nRating: " + rating
+		return "Title: " + title + "\nDescription: " + description + "\nYear: " + year + "\nLanguage: "+ language + "\nRating: " + rating
 				+ "\nActors: " + actorList;
 	}
 
@@ -179,6 +181,14 @@ public class Film {
 
 	public void setActorList(List<Actor> actorList) {
 		this.actorList = actorList;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
 	}
 
 }
