@@ -156,12 +156,12 @@ public class Film {
 	@Override
 	public String toString() {
 		return "Film ID: " + id + "\nTitle: " + title + "\nDescription: " + description + "\nYear: " + year
-				+ "\nLanguage: " + languageId + "\nRental Duration: " + rentalDuration + "\nRental Rate: " + rentalRate
+				+ "\nLanguage: " + language + "\nRental Duration: " + rentalDuration + "\nRental Rate: " + rentalRate
 				+ "\nRuntime: " + length + "\nReplacement Cost: " + replacementCost + "\nRating: " + rating
 				+ "\nSpecial Features: " + specialFeatures + "\nActors: " + actorList;
 	}
 
-	public String toString(int i) {
+	public String mostImportantInfo() {
 		return "Title: " + title + "\nDescription: " + description + "\nYear: " + year + "\nLanguage: " + language
 				+ "\nRating: " + rating + "\nActors: " + actorList;
 	}

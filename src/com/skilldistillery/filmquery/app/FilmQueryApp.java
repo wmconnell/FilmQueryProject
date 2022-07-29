@@ -84,13 +84,17 @@ public class FilmQueryApp {
 			try {
 				Film film = db.findFilmById(menuChoice);
 				System.out.println("");
-				System.out.println(film.toString(1));
+				System.out.println(film.mostImportantInfo());
+				
+				keepGoing = subMenu(input, film);
 
 			} catch (Exception e) {
 				System.out.println("");
 				System.out.println("Film not found.");
 			}
 		}
+		
+		idContinueMenu(input);
 
 	}
 
@@ -100,7 +104,8 @@ public class FilmQueryApp {
 
 		while (keepGoing) {
 			System.out.println("Please enter a keyword search term");
-			String keyword = input.nextLine();
+			String keyword = input.next();
+			input.nextLine();
 			List<Film> films = db.findFilmByKeyword(keyword);
 			try {
 				if (films.size() > 0) {
@@ -108,8 +113,10 @@ public class FilmQueryApp {
 					for (Film film : films) {
 
 						System.out.println("");
-						System.out.println(film.toString(0));
+						System.out.println(film.mostImportantInfo());
+						
 					}
+					keepGoing = subMenu(input, films);
 				} else {
 					System.out.println("");
 					System.out.println("Film not found.");
@@ -122,5 +129,98 @@ public class FilmQueryApp {
 				System.out.println("");
 			}
 		}
+		keywordContinueMenu(input);
+		
+		}
+	
+
+	private void idContinueMenu(Scanner input) {
+		System.out.println("");
+		System.out.println("1. Make another search query");
+		System.out.println("2. Return to main menu");
+		int moreSearchInput = input.nextInt();
+		switch (moreSearchInput) {
+		case 1: searchById(input);
+		break;
+		case 2: mainMenu(input);
+		break;
+		default: System.out.println("Please select either 1 or 2");
+		break; 
+		}
 	}
+	private void keywordContinueMenu(Scanner input) {
+		System.out.println("");
+		System.out.println("1. Make another search query");
+		System.out.println("2. Return to main menu");
+		int moreSearchInput = input.nextInt();
+		switch (moreSearchInput) {
+		case 1: searchByKeyword(input);
+		break;
+		case 2: mainMenu(input);
+		break;
+		default: System.out.println("Please select either 1 or 2");
+		break; 
+		}
+	}
+
+	private boolean subMenu(Scanner input, Film film) {
+		boolean stayInSubMenu = true;
+		while (stayInSubMenu ) {
+			
+			System.out.println("");
+			System.out.println("1: View all film details");
+			System.out.println("2: Return to main menu");
+			int subMenuInput = input.nextInt();
+			input.nextLine();
+			
+			switch (subMenuInput) {
+			case 1: 
+				stayInSubMenu = false;
+				System.out.println(film.toString());
+			break;
+			case 2: 
+					stayInSubMenu = false;
+					mainMenu(input);
+			break;
+			default: System.out.println("Please select either 1 or 2");
+			break;
+			}
+			
+		}
+		
+		return stayInSubMenu;
+	}
+	private boolean subMenu(Scanner input, List<Film> films) {
+		boolean stayInSubMenu = true;
+		while (stayInSubMenu ) {
+			
+			System.out.println("");
+			System.out.println("1: View all film details");
+			System.out.println("2: Return to main menu");
+			int subMenuInput = input.nextInt();
+			input.nextLine();
+			
+			switch (subMenuInput) {
+			case 1: 
+				stayInSubMenu = false;
+				for (Film film : films) {
+					System.out.println("");					
+					System.out.println(film.toString());
+				}
+				break;
+			case 2: 
+				stayInSubMenu = false;
+				mainMenu(input);
+				break;
+			default: System.out.println("Please select either 1 or 2");
+			break;
+			}
+			
+		}
+		
+		return stayInSubMenu;
+	}
+	
+	
+	
 }
