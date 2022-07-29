@@ -31,7 +31,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, requestedFilmId);
-			System.out.println(stmt);
+//			System.out.println(stmt);
 
 			ResultSet rs = stmt.executeQuery();
 
@@ -77,7 +77,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, requestedActorId);
-			System.out.println(stmt);
+//			System.out.println(stmt);
 
 			ResultSet rs = stmt.executeQuery();
 
@@ -114,7 +114,7 @@ public List<Actor> findActorsByFilmId(int requestedFilmId) {
 
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setInt(1, requestedFilmId);
-		System.out.println(stmt);
+//		System.out.println(stmt);
 
 		ResultSet rs = stmt.executeQuery();
 
@@ -134,6 +134,54 @@ public List<Actor> findActorsByFilmId(int requestedFilmId) {
 		e.printStackTrace();
 	}
 	return actors;
+}
+
+@Override
+public Film findFilmByKeyword(String keyword) {
+	List<Actor> actors;
+	
+	
+	List<Film> films = new ArrayList<>();
+	String user = "student";
+	String pass = "student";
+
+	try {
+		Connection conn = DriverManager.getConnection(URL, user, pass);
+		String sql = "SELECT * " + " FROM film WHERE id = ?";
+
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.setString(1, keyword);
+//		System.out.println(stmt);
+
+		ResultSet rs = stmt.executeQuery();
+
+		while (rs.next()) {
+			int filmId = rs.getInt("id");
+			String title = rs.getString("title");
+			String desc = rs.getString("description");
+			int releaseYear = rs.getShort("release_year");
+			int langId = rs.getInt("language_id");
+			int rentDur = rs.getInt("rental_duration");
+			double rate = rs.getDouble("rental_rate");
+			int length = rs.getInt("length");
+			double repCost = rs.getDouble("replacement_cost");
+			String rating = rs.getString("rating");
+			String features = rs.getString("special_features");
+
+			Film film = new Film(filmId, title, desc, releaseYear, langId, rentDur, rate, length, repCost, rating,
+					features, actors);
+			films.add(film);
+		}
+		rs.close();
+		stmt.close();
+		conn.close();
+
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	
+	
+	return films.get(0);
 }
 
 	

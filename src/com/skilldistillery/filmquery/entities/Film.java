@@ -109,24 +109,18 @@ public class Film {
 	public Film() {
 	}
 
+//	public Film(String title, String description, int year, String rating) {
+//		super();
+//		this.title = title;
+//		this.description = description;
+//		this.year = year;
+////		this.languageId = languageId;
+//		this.rating = rating;
+//	}
+
 	public Film(int id, String title, String description, int year, int languageId, int rentalDuration,
-			double rentalRate, int length, double replacementCost, String rating, String specialFeatures) {
-		super();
-		this.id = id;
-		this.title = title;
-		this.description = description;
-		this.year = year;
-		this.languageId = languageId;
-		this.rentalDuration = rentalDuration;
-		this.rentalRate = rentalRate;
-		this.length = length;
-		this.replacementCost = replacementCost;
-		this.rating = rating;
-		this.specialFeatures = specialFeatures;
-	}
-	
-	public Film(int id, String title, String description, int year, int languageId, int rentalDuration,
-			double rentalRate, int length, double replacementCost, String rating, String specialFeatures, List<Actor> actors) {
+			double rentalRate, int length, double replacementCost, String rating, String specialFeatures,
+			List<Actor> actors) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -172,6 +166,11 @@ public class Film {
 				+ "\nLanguage: " + languageId + "\nRental Duration: " + rentalDuration + "\nRental Rate: " + rentalRate
 				+ "\nRuntime: " + length + "\nReplacement Cost: " + replacementCost + "\nRating: " + rating
 				+ "\nSpecial Features: " + specialFeatures + "\nActors: " + actorList;
+	}
+
+	public String toString(int i) {
+		return "Title: " + title + "\nDescription: " + description + "\nYear: " + year + "\nRating: " + rating
+				+ "\nActors: " + actorList;
 	}
 
 	public List<Actor> getActorList() {
